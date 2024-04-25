@@ -12,6 +12,14 @@ class MyFrame(wx.Frame):
     def init_ui(self):
         panel = wx.Panel(self)
         sizer = wx.BoxSizer(wx.VERTICAL)
+
+        text = wx.StaticText(panel, label="wxPython Application")
+        sizer.Add(text, 0, wx.ALIGN_CENTER)
+
+        button = wx.Button(panel, label="Close")
+        button.Bind(wx.EVT_BUTTON, lambda e: self.Close())
+        sizer.Add(button, 0, wx.ALIGN_CENTER)
+
         panel.SetSizer(sizer)
 
 
