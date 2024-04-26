@@ -20,6 +20,21 @@ class MyFrame(wx.Frame):
         button.Bind(wx.EVT_BUTTON, lambda e: self.Close())
         sizer.Add(button, 0, wx.ALIGN_CENTER)
 
+        self.input_text = wx.TextCtrl(
+            panel, style=wx.TEXT_ALIGNMENT_CENTER, value="Write something here"
+        )
+        sizer.Add(self.input_text, 0, wx.ALIGN_CENTER)
+
+        update_button = wx.Button(panel, label="Update Text")
+        update_button.Bind(
+            wx.EVT_BUTTON,
+            lambda e: self.output_text.SetValue(self.input_text.GetValue()),
+        )
+        sizer.Add(update_button, 0, wx.ALIGN_CENTER)
+
+        self.output_text = wx.TextCtrl(panel, style=wx.TE_MULTILINE | wx.TE_READONLY)
+        sizer.Add(self.output_text, 1, wx.EXPAND)
+
         panel.SetSizer(sizer)
 
 
